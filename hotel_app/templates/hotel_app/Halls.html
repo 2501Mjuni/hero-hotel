@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hall Booking</title>
+    <!-- Use Django's static template tag for static files -->
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'Boostrap/css/bootstrap.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'Css/styles.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <span>Mjuni Hotel</span>
+            <!-- <img src="{% static 'Icons/Svg/logo.svg' %}" alt="Hotel Logo"> -->
+          </a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-none d-lg-block"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'front' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Services
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item" href="#">Garden</a></li>
+                  <li><a class="dropdown-item" href="#">Rooms</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="{% url 'halls' %}"
+                      target="_top"
+                      >Halls</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="#">Food</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacts">Contacts</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="offcanvas offcanvas-end bg-dark text-light"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'front' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="offcanvasNavbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Services
+                  </a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark"
+                    aria-labelledby="offcanvasNavbarDropdown"
+                  >
+                    <li><a class="dropdown-item" href="#">Garden</a></li>
+                    <li><a class="dropdown-item" href="#">Rooms</a></li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="{% url 'halls' %}"
+                        target="_blank"
+                        >Halls</a
+                      >
+                    </li>
+                    <li><a class="dropdown-item" href="#">Food</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contacts">Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="top-banner bg-light text-center py-5">
+        <div class="container">
+          <h1 class="display-4">Welcome to Mjuni Hotel</h1>
+          <p class="lead">
+            Experience our excellent services including garden, rooms, halls,
+            and food (Italian, German, and Comoro cuisines).
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main class="container my-5">
+      <h2 class="text-center mb-4">Available Halls</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div
+            class="hall"
+            onclick="showHallDetails('Kamugisha', 4000, 100, 200, 10)"
+            data-bs-toggle="modal"
+            data-bs-target="#hall-details-modal"
+          >
+            <h3>Kamugisha</h3>
+            <p>Price: $4000</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div
+            class="hall"
+            onclick="showHallDetails('Mkwawa', 5000, 150, 250, 12)"
+            data-bs-toggle="modal"
+            data-bs-target="#hall-details-modal"
+          >
+            <h3>Mkwawa</h3>
+            <p>Price: $5000</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div
+            class="hall"
+            onclick="showHallDetails('Kilimanjaro', 6000, 200, 300, 15)"
+            data-bs-toggle="modal"
+            data-bs-target="#hall-details-modal"
+          >
+            <h3>Kilimanjaro</h3>
+            <p>Price: $6000</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div
+            class="hall"
+            onclick="showHallDetails('Minja', 4500, 120, 220, 11)"
+            data-bs-toggle="modal"
+            data-bs-target="#hall-details-modal"
+          >
+            <h3>Mirambo</h3>
+            <p>Price: $4500</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div
+            class="hall"
+            onclick="showHallDetails('Mkapa', 5500, 180, 280, 13)"
+            data-bs-toggle="modal"
+            data-bs-target="#hall-details-modal"
+          >
+            <h3>Nguvu Kazi</h3>
+            <p>Price: $5500</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Hall Details Modal -->
+    <div
+      class="modal fade"
+      id="hall-details-modal"
+      tabindex="-1"
+      aria-labelledby="hall-details-modal-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="hall-details-modal-label">
+              Hall Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h3 id="hall-name"></h3>
+            <p>Price: $<span id="hall-price"></span></p>
+            <p>Capacity: <span id="hall-capacity"></span> people</p>
+            <p>Chairs: <span id="hall-chairs"></span></p>
+            <p>Tables: <span id="hall-tables"></span></p>
+            <p>Parking: <span id="hall-parking"></span></p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#booking-modal"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Modal -->
+
+    <!-- Booking Modal -->
+    <div
+      class="modal fade"
+      id="booking-modal"
+      tabindex="-1"
+      aria-labelledby="booking-modal-label"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="booking-modal-label">Booking Form</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="" id="booking-form">
+              <input
+                type="hidden"
+                name="csrfmiddlewaretoken"
+                value="{{ csrf_token }}"
+              />
+              <input type="hidden" name="hall_id" value="" />
+              <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="first_name"
+                  name="first_name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="surname"
+                  name="surname"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contact"
+                  name="contact"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="address">Address:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  name="address"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="date"
+                  name="date"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="time_start">Start Time:</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="time_start"
+                  name="time_start"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="time_end">End Time:</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="time_end"
+                  name="time_end"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="people">Number of People:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="people"
+                  name="people"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="activity">Activity:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="activity"
+                  name="activity"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'Boostrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Js/main.js' %}"></script>
+  </body>
+</html>

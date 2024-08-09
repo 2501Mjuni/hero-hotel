@@ -1,0 +1,28 @@
+
+#announcement {
+    background-color: #f8f9fa; /* Gray background */
+    text-align: center;
+    padding: 20px;
+  }
+  .gallery-images img {
+    width: 100%; /* Ensures images are responsive */
+  }
+
+  footer {
+    background-color: #343a40; /* Dark background */
+    color: #fff; /* Light text */
+    padding: 20px 0; /* Add some padding for spacing */
+    text-align: center; /* Center-align text */
+  }
+
+  body {
+    height: 100%;
+  }
+
+  @media (max-width: 991.98px) {
+    .navbar.fixed-top {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+    }
+  }

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mjuni Hotel</title>
+    <!-- Load CSS files -->
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'Boostrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'Css/front.css' %}" />
+  </head>
+  <body class="d-flex flex-column">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <span>Mjuni Hotel</span>
+            <!-- <img src="{% static 'icons/svg/logo.svg' %}" alt="Hotel Logo"> -->
+          </a>
+          <button
+            class="navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-none d-lg-block"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'front' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Services
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="navbarDropdown"
+                >
+                  <li><a class="dropdown-item" href="#">Garden</a></li>
+                  <li><a class="dropdown-item" href="#">Rooms</a></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="{% url 'halls' %}"
+                      target="_top"
+                      >Halls</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="#">Food</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacts">Contacts</a>
+              </li>
+            </ul>
+          </div>
+          <div
+            class="offcanvas offcanvas-end bg-dark text-light"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'front' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="offcanvasNavbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Services
+                  </a>
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark"
+                    aria-labelledby="offcanvasNavbarDropdown"
+                  >
+                    <li><a class="dropdown-item" href="#">Garden</a></li>
+                    <li><a class="dropdown-item" href="#">Rooms</a></li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="{% url 'halls' %}"
+                        target="_blank"
+                        >Halls</a
+                      >
+                    </li>
+                    <li><a class="dropdown-item" href="#">Food</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contacts">Contacts</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="d-flex justify-content-center align-items-center flex-column">
+      <section
+        id="announcement"
+        class="d-flex flex-column align-items-center justify-content-center"
+      >
+        <h1>Welcome to Mjuni Hotel</h1>
+        <p>Discover the luxury and comfort of our services.</p>
+        <!-- Add more announcements as needed -->
+      </section>
+
+      <section id="gallery" class="container">
+        <h2 class="text-center my-4">Gallery</h2>
+        <div class="row gallery-images">
+          <div class="col-md-4 mb-4">
+            <img
+              src="{% static 'Images/hotel1.jpg' %}"
+              alt="Hotel Image 1"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <img
+              src="{% static 'Images/hotel2.jpg' %}"
+              alt="Hotel Image 2"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-md-4 mb-4">
+            <img
+              src="{% static 'Images/hotel3.jpg' %}"
+              alt="Hotel Image 3"
+              class="img-fluid"
+            />
+          </div>
+          <!-- Add more images as needed -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center bg-dark text-light py-3">
+      <div class="container">
+        <p>&copy; 2024 Our Hotel. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Load JavaScript files -->
+    <script src="{% static 'Boostrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Js/main.js' %}"></script>
+  </body>
+</html>
